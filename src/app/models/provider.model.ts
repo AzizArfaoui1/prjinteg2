@@ -7,6 +7,4 @@ export interface Provider {
     email: string;
     country: string;
     comments: boolean;
-    candidates: boolean;
-    offers: boolean;
   }

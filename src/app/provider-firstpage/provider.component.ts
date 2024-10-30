@@ -16,8 +16,7 @@ export class ProviderComponent {
     email: '',
     country: '',
     comments: false,
-    candidates: false,
-    offers:false
+
   };
   constructor(private providerService: ProviderserviceService) {}
   onSubmit() {
@@ -34,8 +33,7 @@ export class ProviderComponent {
           email: '',
           country: '',
           comments: false,
-          candidates: false,
-          offers: false
+
         };
       },
       error: error => {
