@@ -17,7 +17,7 @@ export class UserFirstpageComponent {
     firstname: '',
     lastname: '',
     email: '',
-    country: '',
+    location: '',
     comments: false,
     candidates: false,
     offers:false
@@ -34,7 +34,7 @@ export class UserFirstpageComponent {
           firstname: '',
           lastname: '',
           email: '',
-          country: '',
+          location: '',
           comments: false,
           candidates: false,
           offers: false

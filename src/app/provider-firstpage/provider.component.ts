@@ -14,7 +14,7 @@ export class ProviderComponent {
     firstname: '',
     lastname: '',
     email: '',
-    country: '',
+    location: '',
     comments: false,
 
   };
@@ -31,7 +31,7 @@ export class ProviderComponent {
           firstname: '',
           lastname: '',
           email: '',
-          country: '',
+          location: '',
           comments: false,
 
         };

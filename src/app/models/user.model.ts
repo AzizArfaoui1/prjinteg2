@@ -4,7 +4,7 @@ export interface User {
   firstname: string;
   lastname: string;
   email: string;
-  country: string;
+  location: string;
   comments: boolean;
   candidates: boolean;
   offers: boolean;
