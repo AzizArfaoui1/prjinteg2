@@ -1,0 +1,17 @@
+.center-div {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: 100px;           /* Set height as needed */
+    margin-top: 50px;
+    gap: 20px;
+  }
+.btn {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(255, 255, 255, 0.5);
+    width: 300px;
+    height: 80px;
+    background-color: #f4f4f4;
+}
+.btn:hover {
+    background-color: #45a049; /* Color when hovered */
+}
