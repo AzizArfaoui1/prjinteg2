@@ -1,10 +1,12 @@
 export interface User {
+  id?: number; 
   username: string;
-  image?:File;
+  password: string;
   firstname: string;
   lastname: string;
   email: string;
   location: string;
+  adress: string;
   comments: boolean;
   candidates: boolean;
   offers: boolean;

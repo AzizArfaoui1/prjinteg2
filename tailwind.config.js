@@ -3,7 +3,9 @@ module.exports = {
   mode: 'jit',
   content: [
     "./src/app/user-firstpage/user-firstpage.component.html",
-    "./src/app/nav/nav.component.html"
+    "./src/app/home-header/home-header.component.html",
+    "./src/app/user-dashboard/user-dashboard.component.html",
+    "./src/app/user-signin/user-signin.component.html",
   ],
   theme: {
     extend: {},

@@ -8,48 +8,58 @@ import { ProviderserviceService } from '../services/providerservice.service';
   styleUrls: ['./provider.component.css']
 })
 export class ProviderComponent {
-  provider: Provider= {username: '',
-    image: new File([], ""),
-    job:'',
+  provider: Provider = {
+    username: '',
+    password:'',
+    job: '',
     firstname: '',
     lastname: '',
     email: '',
     location: '',
     comments: false,
-
   };
+
   constructor(private providerService: ProviderserviceService) {}
+
   onSubmit() {
-    this.providerService.addUser(this.provider).subscribe({
-      next: response => {
-        console.log('User data sent successfully:', response);
+    // Check if all required fields are filled
+    if (
+      !this.provider.username ||
+      !this.provider.password ||
+      !this.provider.firstname ||
+      !this.provider.lastname ||
+      !this.provider.email ||
+      !this.provider.location ||
+      !this.provider.job
+    ) {
+      alert('Please fill out all fields before submitting');
+      return; // Prevent submission if any field is empty
+    }
+
+    // If all fields are filled, submit the data
+    this.providerService.addProvider(this.provider).subscribe({
+      next: (response) => {
+        console.log('Provider data sent successfully:', response);
         // Optionally reset the form or perform additional actions
-        this.provider = { 
+        this.provider = {
           username: '',
-          image: new File([], ""),
-          job:'',
+          password:'',
+          job: '',
           firstname: '',
           lastname: '',
           email: '',
           location: '',
           comments: false,
-
         };
       },
-      error: error => {
-        console.error('Error sending user data:', error);
+      error: (error) => {
+        console.error('Error sending provider data:', error);
       }
     });
   }
+
   triggerFileInputClick(fileInput: HTMLInputElement) {
     fileInput.click();
   }
 
-  // Function to handle file selection
-  onFileSelected(event: Event) {
-    const fileInput = event.target as HTMLInputElement;
-    if (fileInput.files && fileInput.files.length > 0) {
-      this.provider.image = fileInput.files[0];
-    }
-  }
 }

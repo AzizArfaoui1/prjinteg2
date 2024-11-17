@@ -1,6 +1,7 @@
 export interface Provider {
+  id?: number; 
     username: string;
-    image?:File;
+    password: string;
     job:string;
     firstname: string;
     lastname: string;

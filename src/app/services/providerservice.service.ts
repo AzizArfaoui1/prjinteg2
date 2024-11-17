@@ -12,12 +12,12 @@ export class ProviderserviceService {
 
   constructor(private http: HttpClient) {}
 //addProvider(): Sends a POST request with user data from the form to the backend’s /add endpoint.
-  addUser(provider: Provider): Observable<Provider> {
+  addProvider(provider: Provider): Observable<Provider> {
     return this.http.post<Provider>(`${this.apiUrl}/add`, provider);
   }
 
   // getProvider(): Sends a GET request to retrieve all users from the backend.
-  getUsers(): Observable<Provider[]> {
+  getProvider(): Observable<Provider[]> {
     return this.http.get<Provider[]>(this.apiUrl);
   }
 }
