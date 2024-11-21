@@ -12,7 +12,8 @@ import { ProviderComponent } from './provider-firstpage/provider.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 import { ProviderSigninComponent } from './provider-signin/provider-signin.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserDashboardComponent,
     UserSigninComponent,
     ProviderSigninComponent,
+    ProviderDashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';  // Import Router for navigation
 import { Provider } from '../models/provider.model';
 import { ProviderserviceService } from '../services/providerservice.service';
 
@@ -19,7 +20,7 @@ export class ProviderComponent {
     comments: false,
   };
 
-  constructor(private providerService: ProviderserviceService) {}
+  constructor(private providerService: ProviderserviceService, private router: Router) {}
 
   onSubmit() {
     // Check if all required fields are filled
@@ -51,6 +52,7 @@ export class ProviderComponent {
           location: '',
           comments: false,
         };
+        this.router.navigate(['/ProviderSignup']);  
       },
       error: (error) => {
         console.error('Error sending provider data:', error);

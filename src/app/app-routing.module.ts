@@ -6,6 +6,7 @@ import { ProviderComponent } from './provider-firstpage/provider.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 import { ProviderSigninComponent } from './provider-signin/provider-signin.component';
+import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 
 const routes: Routes = [
   
@@ -14,7 +15,9 @@ const routes: Routes = [
   {path:'provider', title:'provider',component:ProviderComponent},
   {path:'ProviderSignin',title:'ProviderSignin',component:ProviderSigninComponent},
   {path:'userDashboard',title:'userDashboard',component:UserDashboardComponent},
-  {path:'UserSignin',title:'UserSignin',component:UserSigninComponent}
+  {path:'UserSignin',title:'UserSignin',component:UserSigninComponent},
+  {path:'providerDashboard',title:'providerDashboard',component:ProviderDashboardComponent},
+
 ];
 
 @NgModule({

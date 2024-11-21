@@ -79,6 +79,30 @@
             </select>
           </div>
         </div>
+        <div class="sm:col-span-3">
+          <label for="location" class="block text-sm font-medium leading-6 text-gray-900">Job</label>
+          <div class="mt-2">
+            <select id="job" [(ngModel)]="provider.job" name="location" autocomplete="job-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6" required>
+              <option value="">Select Location</option>
+              <option>Electrician</option>
+              <option>Plumber</option>
+              <option>Carpenter</option>
+              <option>Painter</option>
+              <option>Handyman</option>
+              <option>HVAC Technician</option>
+              <option>Mechanic</option>
+              <option>Car Wash and Detailing</option>
+              <option>Towing Service</option>
+              <option>Tire Specialist</option>
+              <option>IT Support Specialist</option>
+              <option>TV Repair Technician</option>
+              <option>Photographer or Videographer</option>
+              <option>Caterer</option>
+              <option>Tutor</option>
+              <option>Furniture Assembly Services</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
   
