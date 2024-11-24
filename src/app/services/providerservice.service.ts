@@ -22,16 +22,13 @@ export class ProviderserviceService {
     return this.http.get<Provider[]>(this.apiUrl);
   }
   
-  login(username: string, password: string, email: string) {
-    throw new Error('Method not implemented.');
-  }
 
   loginProvider(username: string, password: string, email: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, { username, password, email });
   }
 
-  setProviderInfo(user: any) {
-    this.providerInfo = user; // Store user data
+  setProviderInfo(provider: any) {
+    this.providerInfo = provider; // Store user data
   }
 
   getProviderInfo() {

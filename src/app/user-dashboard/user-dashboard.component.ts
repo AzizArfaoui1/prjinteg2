@@ -8,44 +8,50 @@ import { User } from '../models/user.model';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
+  user: User | null = null; // The user data
+  updatedUser: User = { username: '', password: '', firstname: '', lastname: '', email: '', location: '', adress: '', comments: false, candidates: false, offers: false }; // Create an empty object for editing
+  isEditing: boolean = false; // Flag to toggle editing mode
 
   constructor(private userService: UserserviceService) {}
 
-  formattedDate: string = '';
-  user: User | null = null;
-
-  theuser: User | null = null;
-  isEditing: boolean = false; // Tracks if the form is in edit mode
-  updatedUser: User | null = null;
   ngOnInit(): void {
-    const today = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric', // Correct type
-      month: 'long',   // Correct type
-      day: 'numeric',  // Correct type
+    // Load user data from the service
+    this.userService.getUserById(1).subscribe({
+      next: (data) => {
+        this.user = data;
+        this.updatedUser = { ...this.user }; // Initialize editable copy
+      },
+      error: () => console.error('Error fetching user data')
+    });
+  }
 
-      
-    };
-    this.formattedDate = today.toLocaleDateString(undefined, options);
+  // Enable editing mode
+  enableEditing(): void {
+    if (this.user) {
+      this.isEditing = true;
+      this.updatedUser = { ...this.user }; // Create a fresh copy for editing
+    }
+  }
 
+  // Save the changes made during editing
+  saveChanges(): void {
+    if (this.updatedUser) {
+      this.user = { ...this.updatedUser }; // Save changes to user
+      this.isEditing = false;
 
-    this.user = this.userService.getUserInfo(); 
-    this.user = this.userService.getUserInfo(); // Load user data from service
-    if (!this.user) {
-      // If user data isn't available, fetch from API (adjust ID as needed)
-      this.userService.getUserById(1).subscribe({
-        next: data => (this.user = data),
-        error: () => console.error('Error fetching user data')
+      // Optionally, send updated data to the backend
+      this.userService.updateUserInfo(this.user).subscribe({
+        next: (data) => console.log('User updated successfully', data),
+        error: () => console.error('Error updating user')
       });
     }
   }
 
-  
-  enableEditing(): void {
-    this.isEditing = true;
-    this.updatedUser = { ...this.user } as User;
+  // Cancel editing and discard changes
+  cancelEditing(): void {
+    this.isEditing = false;
+    if (this.user) {
+      this.updatedUser = { ...this.user }; // Revert to original data
+    }
   }
-  
-    
-  
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Provider } from '../models/provider.model';
 import { ProviderserviceService } from '../services/providerservice.service';
 
@@ -7,44 +7,60 @@ import { ProviderserviceService } from '../services/providerservice.service';
   templateUrl: './provider-dashboard.component.html',
   styleUrls: ['./provider-dashboard.component.css']
 })
-export class ProviderDashboardComponent {
-  constructor(private userService: ProviderserviceService) {}
+export class ProviderDashboardComponent implements OnInit {
+  provider: Provider | null = null; // Provider data
+  updatedProvider: Provider = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    location: '',
+    job: '',
+    username: '',
+    password: '',
+    comments: false
+  }; // Create a fresh object for editing
+  isEditing: boolean = false; // Toggle editing mode
 
-  formattedDate: string = '';
-  provider: Provider | null = null;
+  constructor(private providerService: ProviderserviceService) {}
 
-  theuser: Provider | null = null;
-  isEditing: boolean = false; // Tracks if the form is in edit mode
-  updatedUser: Provider | null = null;
   ngOnInit(): void {
-    const today = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric', // Correct type
-      month: 'long',   // Correct type
-      day: 'numeric',  // Correct type
+    // Fetch provider data
+    this.providerService.getProviderById(1).subscribe({
+      next: (data) => {
+        this.provider = data;
+        this.updatedProvider = { ...this.provider }; // Prepare editable copy
+      },
+      error: () => console.error('Error fetching provider data')
+    });
+  }
 
-      
-    };
-    this.formattedDate = today.toLocaleDateString(undefined, options);
+  // Enable editing mode
+  enableEditing(): void {
+    if (this.provider) {
+      this.isEditing = true;
+      this.updatedProvider = { ...this.provider }; // Copy provider data for editing
+    }
+  }
 
+  // Save changes made during editing
+  saveChanges(): void {
+    if (this.updatedProvider) {
+      this.provider = { ...this.updatedProvider }; // Update provider with new data
+      this.isEditing = false; // Exit editing mode
 
-    this.provider = this.userService.getProviderInfo(); 
-    this.provider = this.userService.getProviderInfo(); // Load user data from service
-    if (!this.provider) {
-      // If user data isn't available, fetch from API (adjust ID as needed)
-      this.userService.getProviderById(1).subscribe({
-        next: data => (this.provider = data),
-        error: () => console.error('Error fetching user data')
+      // Optionally update data in the backend
+      this.providerService.updateProviderInfo(this.provider).subscribe({
+        next: (data) => console.log('Provider updated:', data),
+        error: () => console.error('Error updating provider data')
       });
     }
   }
 
-  
-  enableEditing(): void {
-    this.isEditing = true;
-    this.updatedUser = { ...this.provider } as Provider;
+  // Cancel editing and revert changes
+  cancelEditing(): void {
+    this.isEditing = false;
+    if (this.provider) {
+      this.updatedProvider = { ...this.provider }; // Revert to original data
+    }
   }
-  
-    
-  
 }
