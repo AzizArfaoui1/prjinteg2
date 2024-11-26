@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
 })
 export class UserserviceService {
 
-  private apiUrl = 'http://localhost:3031/users';
+  private apiUrl = 'http://localhost:8080/api/users'; // URL to the backend API
 
   constructor(private http: HttpClient) {}
 //addUser(): Sends a POST request with user data from the form to the backend’s /add endpoint.
