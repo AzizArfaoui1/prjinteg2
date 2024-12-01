@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
-const ProviderSchema = new mongoose.Schema({
-    username: String,
-    image: String,
-    job: String,
-    firstname: String,
-    lastname: String,
-    email: String,
-    location: String,
-    comments: Boolean
-});
-
-module.exports = mongoose.model('Provider', ProviderSchema);
+const providerSchema = new mongoose.Schema({
+    username: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    phone: { type: String, required: true },
+    location: { type: mongoose.Schema.Types.ObjectId, ref: 'Location', required: false }, // Ensure location is provided
+  });
+  
+  // Don't manually set '_id' to null or any other value
+  module.exports = mongoose.model('Provider', providerSchema);
+  

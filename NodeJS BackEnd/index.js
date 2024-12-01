@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const adminRouter = require('./admin');
+const reservationRoutes = require('./Routers/reservations');
+const ReviewRoutes = require('./Routers/Review');
+const LocationRoutes = require('./Routers/Location');
 require('dotenv').config();
 
 const app = express();
@@ -23,11 +26,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Import and use routes
 const userRouter = require('./Routers/User');
 const providerRouter = require('./Routers/Provider'); // Add Provider router
-const serviceRequestRouter = require('./Routers/ServiceRequest'); // Add ServiceRequest router
+// const serviceRequestRouter = require('./Routers/ServiceRequest'); // Add ServiceRequest router
 
 app.use('/users', userRouter); // User routes
 app.use('/providers', providerRouter); // Provider routes
-app.use('/service-requests', serviceRequestRouter); // Service request routes
+// app.use('/service-requests', serviceRequestRouter); // Service request routes
+app.use('/api/reservations', reservationRoutes);
+app.use("/reviews",ReviewRoutes);
+app.use("/location",LocationRoutes);
+
 
 // Start server
 const PORT = process.env.PORT || 8080;

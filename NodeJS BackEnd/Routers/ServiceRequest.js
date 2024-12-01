@@ -50,5 +50,18 @@ router.patch('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to update service request' });
   }
 });
+// Endpoint : Rechercher tous les services
+router.get('/search', async (req, res) => {
+  try {
+    const services = await Service.find()
+      .populate('provider', 'firstname lastname location')
+      .exec();
+
+    res.json(services);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch services' });
+  }
+});
+
 
 module.exports = router;
