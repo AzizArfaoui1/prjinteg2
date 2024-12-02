@@ -5,6 +5,8 @@ const adminRouter = require('./admin');
 const reservationRoutes = require('./Routers/reservations');
 const ReviewRoutes = require('./Routers/Review');
 const LocationRoutes = require('./Routers/Location');
+const ServiceRouters = require('./Routers/Service');
+const authRoutes = require('./Routers/Login');
 require('dotenv').config();
 
 const app = express();
@@ -34,10 +36,12 @@ app.use('/providers', providerRouter); // Provider routes
 app.use('/api/reservations', reservationRoutes);
 app.use("/reviews",ReviewRoutes);
 app.use("/location",LocationRoutes);
+app.use("/services",ServiceRouters);
+app.use(authRoutes);
 
 
 // Start server
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
