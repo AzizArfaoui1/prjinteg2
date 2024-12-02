@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: prestataire-service-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/providers/**
+        - id: service-service-route
+          uri: http://localhost:8083
+          predicates:
+            - Path=/services/**
+        - id: reservation-service-route
+          uri: http://localhost:8086
+          predicates:
+            - Path=/reservations/**
+server:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
