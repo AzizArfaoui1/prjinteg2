@@ -1,57 +1,93 @@
 import { Component, OnInit } from '@angular/core';
 import { UserserviceService } from '../services/userservice.service';
-import { User } from '../models/user.model';
+import { LocationService } from '../services/location-service.service';
 
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css']
+  styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
-  user: User | null = null; // The user data
-  updatedUser: User = { username: '', password: '', firstname: '', lastname: '', email: '', location: '', adress: '', comments: false, candidates: false, offers: false }; // Create an empty object for editing
-  isEditing: boolean = false; // Flag to toggle editing mode
+  user: any; // Holds user data
+  isEditing = false; // Track edit state
+  updatedUser: any = {};
+  location: any; // Store location details
 
-  constructor(private userService: UserserviceService) {}
+  constructor(
+    private userService: UserserviceService,
+    private locationService: LocationService // Inject LocationService
+  ) {}
 
-  ngOnInit(): void {
-    // Load user data from the service
-    this.userService.getUserById(1).subscribe({
-      next: (data) => {
-        this.user = data;
-        this.updatedUser = { ...this.user }; // Initialize editable copy
+  ngOnInit() {
+    this.user = this.userService.getUserInfo();
+    console.log('User:', this.user);  // Check if the location is included
+    if (this.user && this.user.id) {
+      this.updatedUser = { ...this.user };
+      if (this.user.location) {
+        this.fetchLocation();
+      }
+    } else {
+      console.error('User data is missing or user ID is undefined');
+    }
+  }
+  
+  
+  fetchLocation() {
+    const locationId = this.user.location;
+    console.log('Fetching location for ID:', locationId);
+    if (locationId) {
+      this.locationService.getLocationById(locationId).subscribe(
+        (locationData) => {
+          console.log('Location fetched:', locationData);  // Log location data
+          this.location = locationData;
+          this.user.location = locationData;
+          this.updatedUser.location = this.location;
+        },
+        (error) => {
+          console.error('Error fetching location data:', error);
+        }
+      );
+    }
+  }
+  
+  
+
+  enableEditing() {
+    this.isEditing = true;
+  }
+
+  saveChanges() {
+    if (!this.updatedUser.id) {
+      console.error('User ID is missing');
+      return; // Exit if no valid user ID
+    }
+  
+    // Ensure the location is updated if changed
+    if (this.location) {
+      this.updatedUser.location = this.location._id || this.updatedUser.location; // Update location with the selected or edited location
+    }
+  
+    this.userService.updateUserInfo(this.updatedUser).subscribe(
+      (response) => {
+        console.log('User updated successfully:', response);
+        this.user = response;  // Update user with the response
+        this.updatedUser = { ...this.user };  // Ensure updatedUser reflects the latest changes
+        this.fetchLocation();  // Update location if needed
+        this.isEditing = false;  // Stop editing mode
       },
-      error: () => console.error('Error fetching user data')
-    });
+      (error) => {
+        console.error('Failed to update user:', error);
+      }
+    );
   }
+  
+  
+  
 
-  // Enable editing mode
-  enableEditing(): void {
-    if (this.user) {
-      this.isEditing = true;
-      this.updatedUser = { ...this.user }; // Create a fresh copy for editing
-    }
-  }
+  
 
-  // Save the changes made during editing
-  saveChanges(): void {
-    if (this.updatedUser) {
-      this.user = { ...this.updatedUser }; // Save changes to user
-      this.isEditing = false;
-
-      // Optionally, send updated data to the backend
-      this.userService.updateUserInfo(this.user).subscribe({
-        next: (data) => console.log('User updated successfully', data),
-        error: () => console.error('Error updating user')
-      });
-    }
-  }
-
-  // Cancel editing and discard changes
-  cancelEditing(): void {
+  cancelEditing() {
     this.isEditing = false;
-    if (this.user) {
-      this.updatedUser = { ...this.user }; // Revert to original data
-    }
+    this.updatedUser = { ...this.user }; // Reset to original data
   }
 }

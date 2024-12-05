@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';  // Import Router for navigation
 import { Provider } from '../models/provider.model';
-import { ProviderserviceService } from '../services/providerservice.service';
+import { HttpClient } from '@angular/common/http';  // Import HttpClient
 
 @Component({
   selector: 'app-provider',
@@ -11,7 +11,7 @@ import { ProviderserviceService } from '../services/providerservice.service';
 export class ProviderComponent {
   provider: Provider = {
     username: '',
-    password:'',
+    password: '',
     job: '',
     firstname: '',
     lastname: '',
@@ -20,7 +20,7 @@ export class ProviderComponent {
     comments: false,
   };
 
-  constructor(private providerService: ProviderserviceService, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}  // Inject HttpClient
 
   onSubmit() {
     // Check if all required fields are filled
@@ -37,31 +37,31 @@ export class ProviderComponent {
       return; // Prevent submission if any field is empty
     }
 
-    // If all fields are filled, submit the data
-    this.providerService.addProvider(this.provider).subscribe({
-      next: (response) => {
-        console.log('Provider data sent successfully:', response);
-        // Optionally reset the form or perform additional actions
-        this.provider = {
-          username: '',
-          password:'',
-          job: '',
-          firstname: '',
-          lastname: '',
-          email: '',
-          location: '',
-          comments: false,
-        };
-        this.router.navigate(['/ProviderSignup']);  
-      },
-      error: (error) => {
-        console.error('Error sending provider data:', error);
-      }
-    });
+    // If all fields are filled, send the data to the backend
+    this.http.post('http://localhost:8081/add', this.provider)
+      .subscribe({
+        next: (response) => {
+          console.log('Provider data submitted successfully:', response);
+          // Optionally reset the form or perform additional actions
+          this.provider = {
+            username: '',
+            password: '',
+            job: '',
+            firstname: '',
+            lastname: '',
+            email: '',
+            location: '',
+            comments: false,
+          };
+          this.router.navigate(['/ProviderSignup']);
+        },
+        error: (error) => {
+          console.error('Error submitting provider data:', error);
+        }
+      });
   }
 
   triggerFileInputClick(fileInput: HTMLInputElement) {
     fileInput.click();
   }
-
 }

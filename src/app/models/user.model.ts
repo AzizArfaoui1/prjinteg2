@@ -7,7 +7,5 @@ export interface User {
   email: string;
   location: string;
   adress: string;
-  comments: boolean;
-  candidates: boolean;
-  offers: boolean;
+
 }

@@ -24,6 +24,7 @@ export class ProviderDashboardComponent implements OnInit {
   constructor(private providerService: ProviderserviceService) {}
 
   ngOnInit(): void {
+    
     // Fetch provider data
     this.providerService.getProviderById(1).subscribe({
       next: (data) => {

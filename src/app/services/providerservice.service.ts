@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProviderserviceService {
 
-  private apiUrl = 'http://localhost:8080/'; // URL to the backend API
+  private apiUrl = 'http://localhost:8081/'; // URL to the backend API
   private providerInfo: Provider | null = null;
 
   constructor(private http: HttpClient) {}

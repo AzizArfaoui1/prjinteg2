@@ -17,70 +17,71 @@
               <div class="bg-gray-50 py-24 sm:py-32">
                 <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
                   <h2 class="text-center text-base font-semibold text-indigo-600">Welcome to reserviServices</h2>
-                  <p class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold text-gray-950 sm:text-5xl">
+                  <p class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
                     Everything you need
                   </p>
-              
                   <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
                     <div class="relative lg:row-span-2">
-                      <div class="relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-8">
-                        <h3 class="text-base font-semibold text-gray-900">Your Information</h3>
-                        <p class="mt-1 text-sm text-gray-500">Personal details and application.</p>
-              
-                        <div class="mt-6 border-t border-gray-100">
-                          <dl class="divide-y divide-gray-100">
-                            <!-- Full Name -->
-                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                              <dt class="text-sm font-medium text-gray-900">Full Name</dt>
-                              <dd class="mt-1 text-sm text-gray-700 sm:col-span-2">
-                                <span *ngIf="!isEditing">{{ provider?.firstname }} {{ provider?.lastname }}</span>
-                                <div *ngIf="isEditing">
-                                  <input [(ngModel)]="updatedProvider.firstname" placeholder="First Name" class="input-field" />
-                                  <input [(ngModel)]="updatedProvider.lastname" placeholder="Last Name" class="input-field" />
-                                </div>
-                              </dd>
-                            </div>
-              
-                            <!-- Email -->
-                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                              <dt class="text-sm font-medium text-gray-900">Email</dt>
-                              <dd class="mt-1 text-sm text-gray-700 sm:col-span-2">
-                                <span *ngIf="!isEditing">{{ provider?.email }}</span>
-                                <input *ngIf="isEditing" [(ngModel)]="updatedProvider.email" placeholder="Email" class="input-field" />
-                              </dd>
-                            </div>
-              
-                            <!-- Location -->
-                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                              <dt class="text-sm font-medium text-gray-900">Location</dt>
-                              <dd class="mt-1 text-sm text-gray-700 sm:col-span-2">
-                                <span *ngIf="!isEditing">{{ provider?.location }}</span>
-                                <input *ngIf="isEditing" [(ngModel)]="updatedProvider.location" placeholder="Location" class="input-field" />
-                              </dd>
-                            </div>
-              
-                            <!-- Job -->
-                            <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                              <dt class="text-sm font-medium text-gray-900">Job</dt>
-                              <dd class="mt-1 text-sm text-gray-700 sm:col-span-2">
-                                <span *ngIf="!isEditing">{{ provider?.job }}</span>
-                                <input *ngIf="isEditing" [(ngModel)]="updatedProvider.job" placeholder="Job" class="input-field" />
-                              </dd>
-                            </div>
-                          </dl>
+                      <div class="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"></div>
+                      <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
+                        <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+                          <h3 class="text-base font-semibold text-gray-900">Your Information</h3>
+                          <p class="mt-1 text-sm text-gray-500">Personal details and application.</p>
                         </div>
-              
+                        <div class="px-8 pt-8 sm:px-10">
+                          <div class="mt-6 border-t border-gray-100">
+                            <dl class="divide-y divide-gray-100">
+                              <!-- Full Name -->
+                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-medium text-gray-900">Full Name</dt>
+                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
+                                  <span *ngIf="!isEditing">{{ provider.firstname }} {{ provider.lastname }}</span>
+                                  <div *ngIf="isEditing">
+                                    <input [(ngModel)]="updatedProvider.firstname" placeholder="First Name" class="input-field" />
+                                    <input [(ngModel)]="updatedProvider.lastname" placeholder="Last Name" class="input-field" />
+                                  </div>
+                                </dd>
+                              </div>
+                              <!-- Email -->
+                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-medium text-gray-900">Email</dt>
+                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
+                                  <span *ngIf="!isEditing">{{ provider.email }}</span>
+                                  <input *ngIf="isEditing" [(ngModel)]="updatedProvider.email" placeholder="Email" class="input-field" />
+                                </dd>
+                              </div>
+                              <!-- Location -->
+                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-medium text-gray-900">Location</dt>
+                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
+                                  <span *ngIf="!isEditing">{{ provider.location }}</span>
+                                  <input *ngIf="isEditing" [(ngModel)]="updatedProvider.location" placeholder="Location" class="input-field" />
+                                </dd>
+                              </div>
+                              <!-- Job -->
+                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
+                                <dt class="text-sm font-medium text-gray-900">Job</dt>
+                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
+                                  <span *ngIf="!isEditing">{{ provider.job }}</span>
+                                  <input *ngIf="isEditing" [(ngModel)]="updatedProvider.job" placeholder="Job" class="input-field" />
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
                         <!-- Buttons -->
-                        <div class="mt-5 flex space-x-4">
-                          <button *ngIf="!isEditing" (click)="enableEditing()" class="btn-edit">Edit Profile</button>
-                          <button *ngIf="isEditing" (click)="saveChanges()" class="btn-save">Save Changes</button>
-                          <button *ngIf="isEditing" (click)="cancelEditing()" class="btn-cancel">Cancel</button>
+                        <div class="mt-5 flex justify-end px-8 space-x-4 sm:px-10">
+                          <button *ngIf="!isEditing" (click)="enableEditing()" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit Profile</button>
+                          <button *ngIf="isEditing" (click)="saveChanges()" class="inline-flex items-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-400">Save Changes</button>
+                          <button *ngIf="isEditing" (click)="cancelEditing()" class="inline-flex items-center rounded-md bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-100">Cancel</button>
                         </div>
                       </div>
+                      <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
                     </div>
                   </div>
                 </div>
               </div>
+              
               
               <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
             </div>

@@ -1,0 +1,48 @@
+<form (ngSubmit)="onSubmit()" #locationForm="ngForm">
+    <div>
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        [(ngModel)]="location.address"
+        required
+      />
+    </div>
+  
+    <div>
+      <label for="ville">Ville:</label>
+      <input
+        type="text"
+        id="ville"
+        name="ville"
+        [(ngModel)]="location.ville"
+        required
+      />
+    </div>
+  
+    <div>
+      <label for="postal_code">Postal Code:</label>
+      <input
+        type="text"
+        id="postal_code"
+        name="postal_code"
+        [(ngModel)]="location.postal_code"
+        required
+      />
+    </div>
+  
+    <div>
+      <label for="country">Country:</label>
+      <input
+        type="text"
+        id="country"
+        name="country"
+        [(ngModel)]="location.country"
+        required
+      />
+    </div>
+  
+    <button type="submit" [disabled]="locationForm.invalid">Submit</button>
+  </form>
+  
