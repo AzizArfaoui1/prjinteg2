@@ -21,7 +21,7 @@
             <div class="py-4">
               <p class="text-sm font-medium text-gray-400">Full Name</p>
               <div class="mt-1">
-                <span *ngIf="!isEditing">{{ user?.firstname }} {{ user?.lastname }}</span>
+                <span *ngIf="!isEditing" style="color: black;">{{ user?.firstname }} {{ user?.lastname }}</span>
                 <div *ngIf="isEditing">
                   <input
                     [(ngModel)]="updatedUser.firstname"
@@ -41,7 +41,7 @@
             <div class="py-4">
               <p class="text-sm font-medium text-gray-400">Email</p>
               <div class="mt-1">
-                <span *ngIf="!isEditing">{{ user?.email }}</span>
+                <span *ngIf="!isEditing" style="color: black;">{{ user?.email }}</span>
                 <input
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.email"
@@ -55,7 +55,7 @@
             <div class="py-4">
               <p class="text-sm font-medium text-gray-400">Address</p>
               <div class="mt-1">
-                <span *ngIf="!isEditing">{{ user?.location?.address }}</span>
+                <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.address }}</span>
                 <input
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.address"
@@ -69,7 +69,7 @@
             <div class="py-4">
               <p class="text-sm font-medium text-gray-400">City</p>
               <div class="mt-1">
-                <span *ngIf="!isEditing">{{ user?.location?.ville }}</span>
+                <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.ville }}</span>
                 <input
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.ville"
@@ -83,7 +83,7 @@
             <div class="py-4">
               <p class="text-sm font-medium text-gray-400">Postal Code</p>
               <div class="mt-1">
-                <span *ngIf="!isEditing">{{ user?.location?.postal_code }}</span>
+                <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.postal_code }}</span>
                 <input
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.postal_code"
@@ -97,7 +97,7 @@
             <div class="py-4">
               <p class="text-sm font-medium text-gray-400">Country</p>
               <div class="mt-1">
-                <span *ngIf="!isEditing">{{ user?.location?.country }}</span>
+                <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.country }}</span>
                 <input
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.country"

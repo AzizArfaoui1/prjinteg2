@@ -38,19 +38,21 @@ export class UserFirstpageComponent {
   }
 
   onSubmit() {
-     console.log('Form Submitted'); // Add this line
+    console.log('Form Submitted'); // Log data for debugging
     if (
       !this.user.username ||
       !this.user.password ||
       !this.user.firstname ||
       !this.user.lastname ||
-      !this.user.email 
-      
+      !this.user.email
     ) {
       alert('Please fill out all fields before submitting');
       return;
     }
-
+  
+    
+  
+    // Now send the user data to the backend
     this.userService.addUser(this.user).subscribe({
       next: (response) => {
         console.log('User data sent successfully:', response);
@@ -58,7 +60,9 @@ export class UserFirstpageComponent {
       },
       error: (error) => {
         console.error('Error sending user data:', error);
+        alert('There was an error creating the user. Please try again.');
       }
     });
   }
+  
 }

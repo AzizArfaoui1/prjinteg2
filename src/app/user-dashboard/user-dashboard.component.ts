@@ -26,6 +26,7 @@ export class UserDashboardComponent implements OnInit {
       if (this.user.location) {
         this.fetchLocation();
       }
+    
     } else {
       console.error('User data is missing or user ID is undefined');
     }
@@ -33,12 +34,12 @@ export class UserDashboardComponent implements OnInit {
   
   
   fetchLocation() {
-    const locationId = this.user.location;
-    console.log('Fetching location for ID:', locationId);
+    const locationId = this.user.location._id;  // Assuming location is an object and _id is the field storing the ID
+    console.log('Fetching location for ID:', locationId);  // Ensure locationId is the actual ID string or number
     if (locationId) {
       this.locationService.getLocationById(locationId).subscribe(
         (locationData) => {
-          console.log('Location fetched:', locationData);  // Log location data
+          console.log('Location fetched:', locationData);
           this.location = locationData;
           this.user.location = locationData;
           this.updatedUser.location = this.location;
@@ -47,6 +48,8 @@ export class UserDashboardComponent implements OnInit {
           console.error('Error fetching location data:', error);
         }
       );
+    } else {
+      console.error('Invalid location ID:', locationId);
     }
   }
   

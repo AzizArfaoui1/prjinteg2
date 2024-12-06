@@ -28,6 +28,7 @@ export class UserSigninComponent {
       next: (response: any) => {
         console.log('Login successful:', response);
         this.userService.setUserInfo(response); // Store user data
+        
         this.router.navigate(['/userDashboard']); // Redirect to the dashboard on successful login
       },
       error: (error: any) => {
