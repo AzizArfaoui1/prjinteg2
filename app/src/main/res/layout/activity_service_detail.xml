@@ -1,0 +1,74 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5"> <!-- Fond gris clair pour un look moderne -->
+
+    <!-- Image du service avec coins arrondis -->
+    <ImageView
+        android:id="@+id/serviceImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Image du service"
+        android:background="@drawable/rounded_corners" /> <!-- Assurez-vous d'avoir une ressource drawable 'rounded_corners' -->
+
+    <!-- Nom du service avec un texte plus grand et un espacement entre les éléments -->
+    <TextView
+        android:id="@+id/serviceNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nom du Service"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#333333"
+    android:paddingBottom="8dp"
+    android:ellipsize="end"
+    android:maxLines="1" />
+
+    <!-- Description du service avec une taille de texte plus petite -->
+    <TextView
+        android:id="@+id/serviceDescriptionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="16sp"
+        android:textColor="#555555"
+    android:paddingBottom="8dp" />
+
+    <!-- Prix du service avec une couleur différente pour attirer l'attention -->
+    <TextView
+        android:id="@+id/servicePriceTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prix : 100 €"
+        android:textSize="18sp"
+        android:textColor="#FF5722"
+    android:paddingBottom="8dp" />
+
+    <!-- Durée du service -->
+    <TextView
+        android:id="@+id/serviceDurationTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Durée : 2 heures"
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:paddingBottom="16dp" />
+
+    <!-- Bouton retour stylisé -->
+    <Button
+        android:id="@+id/buttonBackToServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour à la liste des services"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_background"
+    android:padding="16dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp" />
+</LinearLayout>

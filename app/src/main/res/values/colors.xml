@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="OrangeRed">#FF4500</color>
+    <color name="orange">#FFA500</color>
+    <color name="Cornflower_Blue">#6495ED</color>
+    <color name="colorPrimary">#6200EE</color> <!-- Exemple de bleu -->
+    <color name="colorPrimaryDark">#3700B3</color> <!-- Exemple de bleu foncé -->
+    <color name="colorAccent">#03DAC5</color> <!-- Exemple de couleur d'accentuation -->
+
+</resources>

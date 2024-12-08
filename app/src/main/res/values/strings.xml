@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">p1</string>
+
+    <string name="ReserviServices">
+    <font color="#FFA500">Reservi</font><font color="#6495ED">Services</font>
+</string>
+    <string name="service_image">Image du service</string>
+
+    <string-array name="governorates_list">
+        <item>Gouvernorat</item>
+        <item>Tunis</item>
+        <item>Ariana</item>
+        <item>Ben Arous</item>
+        <item>La Manouba</item>
+        <item>Bizerte</item>
+        <item>Nabeul</item>
+        <item>Zaghouan</item>
+        <item>Jendouba</item>
+        <item>Kef</item>
+        <item>Sousse</item>
+        <item>Monastir</item>
+        <item>Mahdia</item>
+        <item>Sfax</item>
+        <item>Kairouan</item>
+        <item>Kasserine</item>
+        <item>Sidi Bouzid</item>
+        <item>Gabès</item>
+        <item>Medenine</item>
+        <item>Tataouine</item>
+        <item>Tozeur</item>
+        <item>Gafsa</item>
+        <item>Siliana</item>
+        <item>Manouba</item>
+    </string-array>
+
+
+</resources>

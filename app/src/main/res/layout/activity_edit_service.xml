@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Champ pour le nom du service -->
+    <EditText
+        android:id="@+id/serviceNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom du service"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <!-- Champ pour la description du service -->
+    <EditText
+        android:id="@+id/serviceDescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <!-- Champ pour le prix du service -->
+    <EditText
+        android:id="@+id/servicePriceEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prix"
+        android:textSize="16sp"
+        android:inputType="numberDecimal"/>
+
+    <!-- Champ pour la date du service -->
+    <EditText
+        android:id="@+id/serviceDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        android:textSize="16sp"
+        android:inputType="date"/>
+
+    <!-- Champ pour la durée du service -->
+    <EditText
+        android:id="@+id/serviceDureeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Durée"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <!-- Champ pour l'URL de l'image -->
+    <EditText
+        android:id="@+id/serviceImageUrlEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="URL de l'image"
+        android:textSize="16sp"
+        android:inputType="text"/>
+
+    <!-- Bouton "Done" pour sauvegarder les modifications -->
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
