@@ -8,6 +8,8 @@ import { ProviderSigninComponent } from './provider-signin/provider-signin.compo
 import { ProviderDashboardComponent } from './provider-dashboard/provider-dashboard.component';
 import { LocationFormComponent } from './location-form/location-form.component';
 import { UserFirstpageComponent } from './user-firstpage/user-firstpage.component';
+import { LocationFormProviderComponent } from './location-form-provider/location-form-provider.component';
+import { ReservationComponent } from './reservation/reservation.component';
 
 const routes: Routes = [
   
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path:'userDashboard',title:'userDashboard',component:UserDashboardComponent},
   {path:'UserSignin',title:'UserSignin',component:UserSigninComponent},
   {path:'providerDashboard',title:'providerDashboard',component:ProviderDashboardComponent},
-  {path:'locationForm',title:'locationForm',component:LocationFormComponent}
+  {path:'locationForm',title:'locationForm',component:LocationFormComponent},
+  {path:'locationFormProvider',title:'locationFormProvider',component:LocationFormProviderComponent},
+  { path: 'reservation', component: ReservationComponent },
 
 ];
 

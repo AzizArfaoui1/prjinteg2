@@ -13,34 +13,31 @@ export class ProviderSigninComponent {
   password = '';
   email = '';
 
-  constructor(private providerService: ProviderserviceService, private router: Router) {}
+  constructor(
+    private providerService: ProviderserviceService,
+    private router: Router
+  ) {}
 
   onSubmit() {
-    this.providerService.loginProvider(this.username, this.password, this.email).subscribe({
-      next: response => {
-        if (response.success) {
-          console.log('Login successful');
-          const provider: Provider = {
-            username: response.data.username,
-            password: '', // You can choose not to store sensitive data
-            firstname: response.data.firstname,
-            lastname: response.data.lastname,
-            job:response.data.job,
-            email: response.data.email,
-            location: response.data.location,
-            comments: response.data.comments,
-          };
-          // Save user information in a service or localStorage
-          this.providerService.setProviderInfo(provider); // Save user info
-          this.router.navigate(['/providerDashboard']); // Navigate to dashboard
-        } else {
-          console.log('Invalid credentials');
-        }
+    if (!this.username || !this.password) {
+      alert('Please fill out all fields before submitting');
+      return;
+    }
+    console.log('Submitting login request:', { username: this.username, password: this.password });
+
+    // Call the login method and subscribe to the response
+    this.providerService.loginProvider(this.username, this.password).subscribe({
+      next: (response: any) => {
+        console.log('Login successful:', response);
+        this.providerService.setProviderInfo(response); // Store user data
+        
+        this.router.navigate(['/providerDashboard']); // Redirect to the dashboard on successful login
       },
-      error: () => {
-        console.log('Error during login');
+      error: (error: any) => {
+        console.error('Error during login:', error);
+        alert('Invalid username or password.');
       }
     });
   }
-  
 }
+

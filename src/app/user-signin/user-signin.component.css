@@ -1,0 +1,7 @@
+body {
+    background-image: url('/assets/images/bg.jpg');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+  }
+  

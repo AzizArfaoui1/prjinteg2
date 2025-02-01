@@ -9,6 +9,11 @@
     
   <div class="bg-gray-50 py-24 sm:py-32">
     <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img class="mx-auto h-10 w-auto" src="/assets/images/logo-svg.svg" alt="Your Company">
+        <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+      </div>
+    
       <h2 class="text-center text-base font-semibold text-indigo-600">Welcome to reserviServices</h2>
       <p class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
         Everything you need to manage user data
@@ -16,19 +21,21 @@
       <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
         <!-- User Information Card -->
         <div class="relative lg:row-span-2">
-          <div class="divide-y divide-gray-100 text-white">
+          <div class="divide-y divide-gray-100 text-white" style="margin: 20px;" >
             <!-- Full Name -->
-            <div class="py-4">
+            <div class="py-4" >
               <p class="text-sm font-medium text-gray-400">Full Name</p>
               <div class="mt-1">
                 <span *ngIf="!isEditing" style="color: black;">{{ user?.firstname }} {{ user?.lastname }}</span>
                 <div *ngIf="isEditing">
                   <input
+                  style="color: black;"
                     [(ngModel)]="updatedUser.firstname"
                     placeholder="First Name"
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                   <input
+                  style="color: black;"
                     [(ngModel)]="updatedUser.lastname"
                     placeholder="Last Name"
                     class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -43,6 +50,7 @@
               <div class="mt-1">
                 <span *ngIf="!isEditing" style="color: black;">{{ user?.email }}</span>
                 <input
+                style="color: black;"
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.email"
                   placeholder="Email"
@@ -58,6 +66,7 @@
                 <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.address }}</span>
                 <input
                   *ngIf="isEditing"
+                  style="color: black;"
                   [(ngModel)]="updatedUser.location.address"
                   placeholder="Address"
                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -71,6 +80,7 @@
               <div class="mt-1">
                 <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.ville }}</span>
                 <input
+                style="color: black;"
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.ville"
                   placeholder="City"
@@ -85,6 +95,7 @@
               <div class="mt-1">
                 <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.postal_code }}</span>
                 <input
+                style="color: black;"
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.postal_code"
                   placeholder="Postal Code"
@@ -99,6 +110,7 @@
               <div class="mt-1">
                 <span *ngIf="!isEditing" style="color: black;">{{ user?.location?.country }}</span>
                 <input
+                style="color: black;"
                   *ngIf="isEditing"
                   [(ngModel)]="updatedUser.location.country"
                   placeholder="Country"
@@ -110,7 +122,7 @@
   
           <!-- Action Buttons -->
           <div class="flex justify-between p-4">
-            <button *ngIf="!isEditing" (click)="enableEditing()" class="bg-blue-500 px-3 py-2 text-white">
+            <button *ngIf="!isEditing" (click)="enableEditing()" class="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2">
               Edit Profile
             </button>
             <div *ngIf="isEditing" class="space-x-2">
@@ -127,38 +139,32 @@
           <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
         
             </div>
-            <div class="relative max-lg:row-start-1">
-              <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"></div>
-              <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
-                <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Messenger</p>
-                  <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit maiores impedit.</p>
-                </div>
-                <div class="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
-                </div>
-              </div>
-              <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]"></div>
-            </div>
-            <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
+            
+            <div class="relative max-lg:row-start-1 lg:col-start-2 lg:row-start-1">
               <div class="absolute inset-px rounded-lg bg-white"></div>
-              <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
-                <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Search</p>
-                  <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi.</p>
-                </div>
-                <div class="flex flex-1 items-center [container-type:inline-size] max-lg:py-6 lg:pb-2">
-                    <span class="ml-3 hidden sm:block">
-                        <button type="button" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                            <svg class="-ml-0.5 mr-1.5 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                <path d="M13.293 12.707a7 7 0 1 0-1.414 1.414l4.596 4.595a1 1 0 0 0 1.415-1.415l-4.597-4.595z" />
-                                <path d="M8 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" />
-                              </svg>
-                              
-                          Search for providers
-                        </button>
-                    </span>                
+              <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
+                <div class="absolute inset-px rounded-lg bg-white"></div>
+                <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
+                  <div class="px-8 pt-8 sm:px-10 sm:pt-10">
+                    <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Search</p>
+                    <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Search providers by services</p>
+                  </div>
+                  <div class="flex justify-between p-4">
+                    <input placeholder="Search for a service..."
+                    [(ngModel)]="serviceName"
+                    (keyup.enter)="onSearch()">
+
+
+                    <button
+                    (click)="onSearch()"
+                      class="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2"
+                    >
+                      Search
+                    </button>
+                  </div>
                 </div>
               </div>
+              
               <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
             </div>
             <div class="relative lg:row-span-2">
@@ -171,9 +177,34 @@
                         <div class="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">Providers</div>
                       </div>
                     </div>
+                    
+                    
                     <div class="px-6 pb-14 pt-6">
-                      <!-- Your code example -->
+                      <div *ngIf="providers.length > 0; else noResults" class="provider-list scrollable-provider-list">
+                        <ul>
+                          <li *ngFor="let provider of providers" class="provider-item cursor-pointer p-2 border rounded-md hover:bg-indigo-100">
+                            <h3>{{ provider.firstname }} {{ provider.lastname }}</h3>
+                            <p>Email: {{ provider.email }}</p>
+                            <p>Phone: {{ provider.phone }}</p>
+                            
+                            
+                              <button (click)="selectProvider(provider)" (click)="navigateToReservation()" class="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2">
+                                  Select Provider
+                              </button>
+                          
+                            
+                            
+                            
+                          </li>
+
+                        </ul>
+                      </div>
+                      <ng-template #noResults>
+                        <p>No providers found for "{{ serviceName }}"</p>
+                      </ng-template>
                     </div>
+                    
+                    
                   </div>
                 </div>
               </div>

@@ -1,3 +1,30 @@
 body{
     padding: 20px;
 }
+body {
+    background-image: url('/assets/images/bg.jpg');
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+  }
+  .provider-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .provider-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #9f8e8e;
+    border-radius: 5px;
+    background-color: #cec3c3;
+  }
+  .provider-item.selected {
+    background-color: #e0e7ff; /* Light indigo background for selected item */
+    border-color: #6366f1; /* Blue border for selected item */
+  }
+  .scrollable-provider-list {
+    max-height: 300px; /* Set a maximum height for the list */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }

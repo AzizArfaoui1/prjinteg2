@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';  // Import Router for navigation
 import { Provider } from '../models/provider.model';
 import { HttpClient } from '@angular/common/http';  // Import HttpClient
+import { LocationService } from '../services/location-service.service';
+import { ProviderserviceService } from '../services/providerservice.service';
 
 @Component({
   selector: 'app-provider',
@@ -12,56 +14,56 @@ export class ProviderComponent {
   provider: Provider = {
     username: '',
     password: '',
-    job: '',
-    firstname: '',
-    lastname: '',
+    firstname: '',   // This is fine
+    lastname: '',     // This is fine
     email: '',
     location: '',
-    comments: false,
-  };
+    phone: ''
+  }
 
-  constructor(private http: HttpClient, private router: Router) {}  // Inject HttpClient
+  constructor(
+    private providerService: ProviderserviceService,
+    private router: Router,
+    private locationService: LocationService // Inject LocationService
+  ) {}
+
+  ngOnInit() {
+    // Get the locationId from the LocationService
+    const locationId = this.locationService.getLocationId();
+    if (locationId) {
+      this.provider.location = locationId; 
+    } else {
+      alert('Please create a location first.');
+      this.router.navigate(['/location']);
+    }
+  }
 
   onSubmit() {
-    // Check if all required fields are filled
     if (
       !this.provider.username ||
       !this.provider.password ||
       !this.provider.firstname ||
       !this.provider.lastname ||
       !this.provider.email ||
-      !this.provider.location ||
-      !this.provider.job
+      !this.provider.phone
     ) {
-      alert('Please fill out all fields before submitting');
-      return; // Prevent submission if any field is empty
+      alert('Please fill out all fields before submitting.');
+      return;
     }
-
-    // If all fields are filled, send the data to the backend
-    this.http.post('http://localhost:8081/add', this.provider)
-      .subscribe({
-        next: (response) => {
-          console.log('Provider data submitted successfully:', response);
-          // Optionally reset the form or perform additional actions
-          this.provider = {
-            username: '',
-            password: '',
-            job: '',
-            firstname: '',
-            lastname: '',
-            email: '',
-            location: '',
-            comments: false,
-          };
-          this.router.navigate(['/ProviderSignup']);
-        },
-        error: (error) => {
-          console.error('Error submitting provider data:', error);
-        }
-      });
+  
+    this.providerService.addProvider(this.provider).subscribe({
+      next: (response) => {
+        console.log('Provider created successfully:', response);
+        alert('Provider created successfully!');
+        this.router.navigate(['/ProviderSignin']); // Redirect after successful creation
+      },
+      error: (error) => {
+        console.error('Error creating provider:', error);
+        alert('Failed to create provider. Please try again.');
+      }
+    });
   }
-
-  triggerFileInputClick(fileInput: HTMLInputElement) {
-    fileInput.click();
-  }
+  
+  
 }
+

@@ -31,6 +31,7 @@ export class UserFirstpageComponent {
     const locationId = this.locationService.getLocationId();
     if (locationId) {
       this.user.location = locationId; 
+      console.log(locationId)
     } else {
       alert('Please create a location first.');
       this.router.navigate(['/location']);

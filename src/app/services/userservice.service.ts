@@ -26,6 +26,7 @@ export class UserserviceService {
   }
 
   setUserInfo(user: any) {
+    console.log('Setting user info:', user); 
     this.userInfo = user; // Store user data
   }
 

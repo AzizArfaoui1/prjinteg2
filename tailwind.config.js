@@ -6,6 +6,8 @@ module.exports = {
     "./src/app/home-header/home-header.component.html",
     "./src/app/user-dashboard/user-dashboard.component.html",
     "./src/app/user-signin/user-signin.component.html",
+    "./src/app/home/home.component.html",
+
   ],
   theme: {
     extend: {},

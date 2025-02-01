@@ -1,5 +1,7 @@
+import { Service } from "./service.model";
+
 export interface User {
-  id?: number; 
+  id?: string; 
   username: string;
   password: string;
   firstname: string;
@@ -7,5 +9,6 @@ export interface User {
   email: string;
   location: string;
   adress: string;
-
+  services?: Service[]; 
 }
+

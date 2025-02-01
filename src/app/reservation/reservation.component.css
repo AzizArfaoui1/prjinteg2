@@ -1,0 +1,75 @@
+/* General Styles */
+body {
+    
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light background */
+    color: #333; /* Neutral text color */
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh;
+    
+  }
+  
+  /* Container for the reservation form */
+  form {
+   
+    background-color: #9581ba;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px black;
+    padding: 200px;
+    margin: 100px;
+    text-align: center;
+    
+  }
+  
+
+  
+
+  
+  /* Buttons */
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50; /* Green for submit */
+    color: #fff;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  button[type="button"] {
+    background-color: #f44336; /* Red for cancel */
+    color: #fff;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #e53935;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    form {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 20px 15px;
+    }
+  }

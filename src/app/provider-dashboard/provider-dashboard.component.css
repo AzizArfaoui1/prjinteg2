@@ -1,0 +1,106 @@
+.services-list {
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #d5d5d5; /* Light gray background */
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow: hidden; /* Prevent child overflow */
+  }
+  
+  .services-list ul {
+    list-style: none; /* Remove default list style */
+    padding: 0;
+    margin: 0;
+    max-height: 400px; /* Limit the height of the list */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-color: #bcbcbc #f9f9f9; /* Custom scrollbar colors (Firefox) */
+  }
+  
+  /* For WebKit browsers (Chrome, Edge, Safari) */
+  .services-list ul::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .services-list ul::-webkit-scrollbar-thumb {
+    background-color: #007BFF; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded scrollbar thumb */
+  }
+  
+  .services-list ul::-webkit-scrollbar-track {
+    background-color: #f9f9f9; /* Scrollbar track color */
+  }
+  
+  .services-list li { 
+    max-height: 300px;
+    padding: 30px;
+    margin-bottom: 15px;
+    background-color: #fff; /* White background for each service */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: transform 0.2s, box-shadow 0.2s; /* Animation for hover effect */
+  }
+  
+  .services-list li:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly darker shadow on hover */
+  }
+  
+  .services-list li h3 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+    color: #092600; /* Blue for the service name */
+  }
+  
+  .services-list li p {
+    margin: 5px 0;
+    font-size: 15px;
+    color: #555; /* Medium gray text for details */
+  }
+  
+  .services-list li p strong {
+    color: #000; /* Bold text for labels */
+  }
+  
+  .services-list ng-template p {
+    text-align: center;
+    font-size: 16px;
+    color: #ff0000; /* Light gray for no-services message */
+    margin-top: 20px;
+  }
+  /* In your global stylesheet or component stylesheet */
+
+.flex {
+    display: flex;
+  }
+  
+  .gap-4 {
+    gap: 1rem; /* Adjust the gap as needed */
+  }
+  
+  .bg-blue-500 {
+    background-color: #7351e3; /* Tailwind CSS blue-500 color */
+  }
+  
+  .bg-red-500 {
+    background-color: #f56565; /* Tailwind CSS red-500 color */
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .rounded-md {
+    border-radius: 0.375rem;
+  }

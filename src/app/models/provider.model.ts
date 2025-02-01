@@ -1,11 +1,13 @@
+import { Service } from "./service.model";
+
 export interface Provider {
-  id?: number; 
+  id?: string; 
     username: string;
     password: string;
-    job:string;
+    phone: string;
     firstname: string;
     lastname: string;
     email: string;
     location: string;
-    comments: boolean;
+    services?: Service[] ; 
   }

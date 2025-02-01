@@ -7,130 +7,341 @@
 </head>
 <body>
     
-      <div class="bg-gray-50 py-24 sm:py-32">
-        <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-          <h2 class="text-center text-base/7 font-semibold text-indigo-600">Welcome to reserviServices</h2>
-          <p class="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">Everything you need </p>
-          <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-            <div class="relative lg:row-span-2">
-              <div class="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"></div>
-              <div class="bg-gray-50 py-24 sm:py-32">
-                <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                  <h2 class="text-center text-base font-semibold text-indigo-600">Welcome to reserviServices</h2>
-                  <p class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
-                    Everything you need
-                  </p>
-                  <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-                    <div class="relative lg:row-span-2">
-                      <div class="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"></div>
-                      <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
-                        <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-                          <h3 class="text-base font-semibold text-gray-900">Your Information</h3>
-                          <p class="mt-1 text-sm text-gray-500">Personal details and application.</p>
-                        </div>
-                        <div class="px-8 pt-8 sm:px-10">
-                          <div class="mt-6 border-t border-gray-100">
-                            <dl class="divide-y divide-gray-100">
-                              <!-- Full Name -->
-                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                                <dt class="text-sm font-medium text-gray-900">Full Name</dt>
-                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
-                                  <span *ngIf="!isEditing">{{ provider.firstname }} {{ provider.lastname }}</span>
-                                  <div *ngIf="isEditing">
-                                    <input [(ngModel)]="updatedProvider.firstname" placeholder="First Name" class="input-field" />
-                                    <input [(ngModel)]="updatedProvider.lastname" placeholder="Last Name" class="input-field" />
-                                  </div>
-                                </dd>
-                              </div>
-                              <!-- Email -->
-                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                                <dt class="text-sm font-medium text-gray-900">Email</dt>
-                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
-                                  <span *ngIf="!isEditing">{{ provider.email }}</span>
-                                  <input *ngIf="isEditing" [(ngModel)]="updatedProvider.email" placeholder="Email" class="input-field" />
-                                </dd>
-                              </div>
-                              <!-- Location -->
-                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                                <dt class="text-sm font-medium text-gray-900">Location</dt>
-                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
-                                  <span *ngIf="!isEditing">{{ provider.location }}</span>
-                                  <input *ngIf="isEditing" [(ngModel)]="updatedProvider.location" placeholder="Location" class="input-field" />
-                                </dd>
-                              </div>
-                              <!-- Job -->
-                              <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                                <dt class="text-sm font-medium text-gray-900">Job</dt>
-                                <dd class="mt-1 text-sm text-gray-700 sm:col-span-2" *ngIf="provider">
-                                  <span *ngIf="!isEditing">{{ provider.job }}</span>
-                                  <input *ngIf="isEditing" [(ngModel)]="updatedProvider.job" placeholder="Job" class="input-field" />
-                                </dd>
-                              </div>
-                            </dl>
-                          </div>
-                        </div>
-                        <!-- Buttons -->
-                        <div class="mt-5 flex justify-end px-8 space-x-4 sm:px-10">
-                          <button *ngIf="!isEditing" (click)="enableEditing()" class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit Profile</button>
-                          <button *ngIf="isEditing" (click)="saveChanges()" class="inline-flex items-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-blue-400">Save Changes</button>
-                          <button *ngIf="isEditing" (click)="cancelEditing()" class="inline-flex items-center rounded-md bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-100">Cancel</button>
-                        </div>
-                      </div>
-                      <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
-                    </div>
-                  </div>
+  <div class="bg-gray-50 py-24 sm:py-32">
+    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <img class="mx-auto h-10 w-auto" src="/assets/images/logo-svg.svg" alt="Your Company">
+        <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+      </div>
+    
+      <h2 class="text-center text-base font-semibold text-indigo-600">Welcome to reserviServices</h2>
+      <p class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
+        Everything you need to manage provider data
+      </p>
+     
+
+      <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+        <!-- User Information Card -->
+        <div class="relative lg:row-span-2">
+          <div class="divide-y divide-gray-100 text-white" style="margin: 20px;" >
+            <!-- Full Name -->
+            <div class="py-4" >
+              <p class="text-sm font-medium text-gray-400">Full Name</p>
+              <div class="mt-1">
+                <span *ngIf="!isEditing" style="color: black;">{{ provider?.firstname }} {{ provider?.lastname }}</span>
+                <div *ngIf="isEditing">
+                  <input
+                    [(ngModel)]="updatedProvider.firstname"
+                    placeholder="First Name"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    style="color: black;"
+                  />
+                  <input
+                    [(ngModel)]="updatedProvider.lastname"
+                    placeholder="Last Name"
+                    class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    style="color: black;"
+                    />
                 </div>
               </div>
-              
-              
-              <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
             </div>
-            <div class="relative max-lg:row-start-1">
+  
+            <!-- Email -->
+            <div class="py-4">
+              <p class="text-sm font-medium text-gray-400">Email</p>
+              <div class="mt-1">
+                <span *ngIf="!isEditing" style="color: black;">{{ provider?.email }}</span>
+                <input
+                  *ngIf="isEditing"
+                  [(ngModel)]="updatedProvider.email"
+                  placeholder="Email"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                style="color: black;"
+                  />
+              </div>
+            </div>
+  <!-- phone -->
+  <div class="py-4">
+    <p class="text-sm font-medium text-gray-400">Phone number</p>
+    <div class="mt-1">
+      <span *ngIf="!isEditing" style="color: black;">{{ provider?.phone }}</span>
+      <input
+        *ngIf="isEditing"
+        [(ngModel)]="updatedProvider.phone"
+        placeholder="phone "
+        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+      style="color: black;"
+        />
+    </div>
+  </div>
+            <!-- Location: Address -->
+            <div class="py-4">
+              <p class="text-sm font-medium text-gray-400">Address</p>
+              <div class="mt-1">
+                <span *ngIf="!isEditing" style="color: black;">{{ provider?.location?.address }}</span>
+                <input
+                  *ngIf="isEditing"
+                  [(ngModel)]="updatedProvider.location.address"
+                  placeholder="Address"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                style="color: black;"
+                  />
+              </div>
+            </div>
+  
+            <!-- Location: City -->
+            <div class="py-4">
+              <p class="text-sm font-medium text-gray-400">City</p>
+              <div class="mt-1">
+                <span *ngIf="!isEditing" style="color: black;">{{ provider?.location?.ville }}</span>
+                <input
+                  *ngIf="isEditing"
+                  [(ngModel)]="updatedProvider.location.ville"
+                  placeholder="City"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                style="color: black;"
+                  />
+              </div>
+            </div>
+            
+            <!-- Location: Postal Code -->
+            <div class="py-4">
+              <p class="text-sm font-medium text-gray-400">Postal Code</p>
+              <div class="mt-1">
+                <span *ngIf="!isEditing" style="color: black;">{{ provider?.location?.postal_code }}</span>
+                <input
+                  *ngIf="isEditing"
+                  [(ngModel)]="updatedProvider.location.postal_code"
+                  placeholder="Postal Code"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                style="color: black;"
+                  />
+              </div>
+            </div>
+  
+            <!-- Location: Country -->
+            <div class="py-4">
+              <p class="text-sm font-medium text-gray-400">Country</p>
+              <div class="mt-1">
+                <span *ngIf="!isEditing" style="color: black;">{{ provider?.location?.country }}</span>
+                <input
+                  *ngIf="isEditing"
+                  [(ngModel)]="updatedProvider.location.country"
+                  placeholder="Country"
+                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                style="color: black;"
+                  />
+              </div>
+            </div>
+          </div>
+  
+          <!-- Action Buttons -->
+          <div class="flex justify-between p-4">
+            <button *ngIf="!isEditing" (click)="enableEditing()" class="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2">
+              Edit Profile
+            </button>
+            <div *ngIf="isEditing" class="space-x-2">
+              <button (click)="saveChanges()" class="bg-green-500 px-3 py-2 text-white">
+                Save Changes
+              </button>
+              <button (click)="cancelEditing()" class="bg-gray-200 px-3 py-2">
+                Cancel
+              </button>
+            </div>
+          </div>
+          
+          
+          <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
+        
+            </div>
+            <div class="relative lg:row-span-2">
               <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"></div>
               <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
                 <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Messenger</p>
-                  <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit maiores impedit.</p>
+                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Reservations for Your Services:</p>
                 </div>
                 <div class="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
+                  <div class="flex flex-1 flex-col items-center justify-start px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2 overflow-auto">
+                    <!-- Check if there are reservations -->
+                    <div *ngIf="reservations && reservations.length > 0" class="services-list">
+                      <ul >
+                        <li *ngFor="let reservation of reservations" >
+                
+                          <p><strong>User:</strong> {{ reservation.userId.firstname }} {{ reservation.userId.lastname }}</p>
+                          <p><strong>Date:</strong> {{ reservation.date | date:'fullDate' }}</p>
+                          <p><strong>Status:</strong> {{ reservation.status }}</p>
+                          <div class="flex space-x-4">
+                            <button 
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md" 
+                            (click)="confirmReservation(reservation._id)">
+                            Confirm
+                          </button>
+                          &nbsp;&nbsp;
+                            <button class="bg-red-500 text-white px-4 py-2 rounded-md"
+                            (click)="cancelReservation(reservation._id)">
+                              Cancel
+                            </button>
+                          </div>
+                        </li>
+                        
+                      </ul>
+                      
+                    </div>
+              
+                    <!-- If no reservations -->
+                    <div *ngIf="reservations && reservations.length === 0" class="text-center mt-4">
+                      <p class="text-gray-600">No reservations yet.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]"></div>
             </div>
-            <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-              <div class="absolute inset-px rounded-lg bg-white"></div>
-              <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
-                <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Requests</p>
-                  <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi.</p>
-                </div>
-                <div class="flex flex-1 items-center [container-type:inline-size] max-lg:py-6 lg:pb-2">
-                                    
-                </div>
-              </div>
-              <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
-            </div>
+            
             <div class="relative lg:row-span-2">
               <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
               <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
-                
                 <div class="relative min-h-[30rem] w-full grow">
                   <div class="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-gray-900 shadow-2xl">
                     <div class="flex bg-gray-800/40 ring-1 ring-white/5">
                       <div class="-mb-px flex text-sm/6 font-medium text-gray-400">
-                        <div class="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">Clients</div>
+                        <div class="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">Services</div>
                       </div>
                     </div>
                     <div class="px-6 pb-14 pt-6">
-                      <!-- Your code example -->
-                    </div>
+                      <!-- List services -->
+                      <!-- Conditional Rendering -->
+                      <div *ngIf="!isUpdatingService; else updateForm">
+                        <!-- Services List -->
+                        <div class="services-list">
+                          <div *ngIf="services.length > 0; else noServices">
+                            
+                              <ul>
+                                <li *ngFor="let service of services">
+                                  <h3>{{ service.serviceName }}</h3>
+                                  <p>{{ service.description }}</p>
+                                  <p><strong>Price:</strong> {{ service.price }}</p>
+                                  <p><strong>Duration:</strong> {{ service.duree }}</p>
+                                  <button (click)="enableUpdate(service)" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+                                    Update
+                                  </button>&nbsp; &nbsp;
+                                  <button (click)="deleteService(service)" class="bg-red-500 text-white px-4 py-2 rounded-md">
+                                    Delete
+                                  </button>
+                                </li>
+                              </ul>
+                            
+                          </div>
+                          <ng-template #noServices>
+                            <p>No services added yet.</p>
+                          </ng-template>
+                          
+                          <ng-template #noServices>
+                            <p>No services added yet.</p>
+                          </ng-template>
+                        </div>
+                      </div>
+
+                      <!-- Update Service Form -->
+                      <ng-template #updateForm>
+                        <div class="modal">
+                          <div class="modal-content">
+                            <form (ngSubmit)="saveUpdatedService()">
+                              <label class="block text-sm font-medium text-gray-500">Service Name</label>
+                              <input [(ngModel)]="updatedService.serviceName" name="serviceName" required class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"/>
+
+                              <label class="block text-sm font-medium text-gray-500">Description</label>
+                              <input [(ngModel)]="updatedService.description" name="description" required class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"/>
+
+                              <label class="block text-sm font-medium text-gray-500">Price</label>
+                              <input [(ngModel)]="updatedService.price" name="price" required type="number" class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"/>
+
+                              <label class="block text-sm font-medium text-gray-500">Duration</label>
+                              <input [(ngModel)]="updatedService.duree" name="duree" required class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"/>&nbsp; &nbsp;
+                                <div class="flex gap-4">
+                                  <button type="submit" class="bg-green-500 px-3 py-2 text-white">Save Changes</button>&nbsp; &nbsp;
+                                  <button type="button" (click)="cancelServiceUpdate()" class="bg-gray-200 px-3 py-2">Cancel</button>
+                                </div>
+                            </form>
+                          </div>
+                        </div>
+                      </ng-template>         
+                    </div>                           
                   </div>
                 </div>
               </div>
-              <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
-            </div>
+            <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
+          </div>                      
+        </div>
+                    
+                    <!-- Service Addition Form -->
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-gray-900">Add a New Service</h3>
+            <form (ngSubmit)="addService()" #serviceForm="ngForm">
+              <div class="mt-4">
+                <label for="serviceName" class="block text-sm font-medium text-gray-700">Service Name</label>
+                <input
+                  type="text"
+                  id="serviceName"
+                  [(ngModel)]="newService.serviceName"
+                  name="serviceName"
+                  required
+                  class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="mt-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea
+                  id="description"
+                  [(ngModel)]="newService.description"
+                  name="description"
+                  required
+                  rows="4"
+                  class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                ></textarea>
+              </div>
+
+              <div class="mt-4">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <input
+                  type="number"
+                  id="price"
+                  [(ngModel)]="newService.price"
+                  name="price"
+                  required
+                  class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="mt-4">
+                <label for="duree" class="block text-sm font-medium text-gray-700">Duration</label>
+                <input
+                  type="text"
+                  id="duree"
+                  [(ngModel)]="newService.duree"
+                  name="duree"
+                  required
+                  class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <!-- Hidden Provider ID Field -->
+              <input type="hidden" [(ngModel)]="newService.provider" [ngModelOptions]="{standalone: true}" />
+
+              <div class="mt-4">
+                <button
+                  type="submit"
+                  [disabled]="serviceForm.invalid"
+                  class="px-4 py-2 bg-indigo-600 text-white rounded-md"
+                >
+                  Add Service
+                </button>
+              </div>
+            </form>
           </div>
         </div>
+        
       </div>
       
 </body>

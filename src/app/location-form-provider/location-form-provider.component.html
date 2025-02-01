@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  
 </head>
 <body backgroud-im>
   <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-    
     <h2 class="text-center text-base font-semibold text-indigo-600">Welcome to reserviServices</h2>
-    
     <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10" >
       <h3 class="text-center text-base font-semibold text-gray-900" >Add your Location</h3>
       <p class=" text-center mt-1 text-sm text-gray-500">Personal details and application.</p>
@@ -19,9 +18,7 @@
       </div>
     
     </div>
-    </div>
-    &nbsp;
-  <form (ngSubmit)="onSubmit()" #locationForm="ngForm" >
+    <form (ngSubmit)="onSubmit()" #locationForm="ngForm">
       <div>
         <label for="address">Address:</label>
         <input
@@ -68,6 +65,6 @@
     
       <button type="submit" [disabled]="locationForm.invalid">Submit</button>
     </form>
-    
+  </div>
 </body>
-</html>&nbsp;
+</html>
